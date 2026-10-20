@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Carlos Zuniga's AI for Interdisciplinary Design portfolio."
+    />
+    <title>AI for Interdisciplinary Design Portfolio | Carlos Zuniga</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="home-hero" aria-labelledby="page-title">
+        <div class="home-intro">
+          <p class="eyebrow">Carlos Zuniga</p>
+          <h1 id="page-title">AI for Interdisciplinary Design Portfolio</h1>
+          <h2>Carlos Zuniga’s Portfolio</h2>
+          <p class="home-description">
+            This website features my two projects so far from my AI for Design course.
+          </p>
+        </div>
+
+        <div class="canvas-wrap">
+          <p class="canvas-hint" id="canvas-instructions">Click to add a face</p>
+          <canvas
+            id="face-canvas"
+            role="img"
+            aria-label="Interactive artwork. Click or tap to add a cartoon face."
+            aria-describedby="canvas-instructions"
+          ></canvas>
+        </div>
+      </section>
+
+      <section class="projects" aria-labelledby="projects-title">
+        <div class="section-heading-row">
+          <h2 id="projects-title">Projects</h2>
+        </div>
+
+        <article class="project-preview album-preview">
+          <a href="album.html" class="project-link" aria-label="View the Badfish album cover project">
+            <div class="project-heading">
+              <p class="project-index">Project 01</p>
+              <h3>“Badfish” by Sublime beach album cover</h3>
+              <span class="view-project" aria-hidden="true">View project <span>↗</span></span>
+            </div>
+            <div class="preview-media square-preview">
+              <img
+                src="assets/images/album-cover-final.png"
+                alt="Final Badfish by Sublime beach album cover"
+                width="512"
+                height="512"
+              />
+            </div>
+          </a>
+        </article>
+
+        <article class="project-preview classroom-preview">
+          <a href="classroom.html" class="project-link" aria-label="View the 2030 classroom project">
+            <div class="project-heading">
+              <p class="project-index">Project 02</p>
+              <h3>2030 discussion-focused classroom</h3>
+              <span class="view-project" aria-hidden="true">View project <span>↗</span></span>
+            </div>
+            <div class="preview-media landscape-preview">
+              <img
+                src="assets/images/classroom-final.png"
+                alt="Final 2030 discussion-focused classroom concept"
+                width="512"
+                height="384"
+              />
+            </div>
+          </a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>AI for Interdisciplinary Design</p>
+      <p>Carlos Zuniga</p>
+    </footer>
+  </body>
+</html>
