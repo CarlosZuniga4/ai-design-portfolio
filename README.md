@@ -1,6 +1,6 @@
 # AI for Interdisciplinary Design Portfolio
 
-A four-page static portfolio created for Carlos Zuniga's AI for Design course.
+A five-page static portfolio created for Carlos Zuniga's AI for Design course.
 
 ## Pages
 
@@ -8,6 +8,8 @@ A four-page static portfolio created for Carlos Zuniga's AI for Design course.
 - `album.html` - “Badfish” by Sublime album-cover project
 - `classroom.html` - 2030 discussion-focused classroom project
 - `consigiere.html` - Consigiere research and game proposal
+- `consigliere-rough-draft.html` - Consigliere Finder playable rough draft
+- `games/consigliere-finder/` - deployable game files linked from the rough-draft page
 
 ## Publish with GitHub Pages
 
@@ -20,7 +22,8 @@ A four-page static portfolio created for Carlos Zuniga's AI for Design course.
 All site links are relative, so the portfolio works both at a user-site URL and inside a project
 subdirectory such as `https://username.github.io/repository-name/`.
 
-The deployment workflow publishes only the four pages and their web assets. The original project
+The deployment workflow publishes the five portfolio pages, the playable Consigliere Finder game,
+and their web assets. The original project
 images and design brief remain unchanged in the repository and are not included in the deployed site.
 
 ## Local preview

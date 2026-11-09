@@ -797,6 +797,63 @@ blockquote p:last-child {
   color: var(--white);
 }
 
+.play-game-link {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.1rem 1.4rem;
+  border: 2px solid currentColor;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.play-game-link:hover,
+.play-game-link:focus-visible {
+  background: var(--white);
+  color: var(--proposal-red);
+}
+
+.rough-draft-copy {
+  max-width: 62rem;
+}
+
+.rough-draft-copy > p,
+.revision-list {
+  font-size: clamp(1.08rem, 1.55vw, 1.35rem);
+}
+
+.rough-draft-copy > p + p {
+  margin-top: 2rem;
+}
+
+.rough-draft-copy h3 {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.7rem, 3vw, 3.3rem);
+  font-weight: 500;
+}
+
+.rough-draft-copy h2 + h3 {
+  margin-top: 0;
+}
+
+.revision-list {
+  max-width: 52rem;
+  margin: 0;
+  padding-left: 1.35em;
+}
+
+.revision-list li {
+  padding-left: 0.65rem;
+}
+
+.revision-list li + li {
+  margin-top: 1.5rem;
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
