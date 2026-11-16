@@ -12,6 +12,7 @@ let state = createInitialState();
 let pendingSelection = null;
 let curtainTimers = [];
 const SLIDE_DURATION_MS = 500;
+const FINAL_SELECTION_BADGE_DELAY_MS = 400;
 
 function candidateBio(candidate) {
   return `
@@ -185,16 +186,22 @@ function openConfirmation(candidateId) {
   confirmDialog.showModal();
 }
 
+function finishSelection(label, updateScene) {
+  state.locked = true;
+  renderSelection();
+  curtainTimers.push(window.setTimeout(() => runCurtain(label, updateScene), FINAL_SELECTION_BADGE_DELAY_MS));
+}
+
 function confirmSelection(candidateId) {
   if (state.phase === "select-initial") {
     state.firstRound = addUniqueSelection(state.firstRound, candidateId, 3);
-    if (state.firstRound.length === 3) return runCurtain("Chit Chat", () => { state.phase = "chat1"; state.chatIndex = 0; });
+    if (state.firstRound.length === 3) return finishSelection("Chit Chat", () => { state.phase = "chat1"; state.chatIndex = 0; });
   } else if (state.phase === "select-shortlist") {
     state.finalists = addUniqueSelection(state.finalists, candidateId, 2);
-    if (state.finalists.length === 2) return runCurtain("Chit Chat", () => { state.phase = "chat2"; state.chatIndex = 0; });
+    if (state.finalists.length === 2) return finishSelection("Chit Chat", () => { state.phase = "chat2"; state.chatIndex = 0; });
   } else {
     state.winner = candidateId;
-    return runCurtain("Your Consigliere", () => { state.phase = "ending"; });
+    return finishSelection("Your Consigliere", () => { state.phase = "ending"; });
   }
   renderSelection();
 }
