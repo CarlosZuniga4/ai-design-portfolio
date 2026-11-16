@@ -30,7 +30,7 @@ export const candidates = [
     weapon: "Karambit knives",
     strengths: "Caring nature",
     weaknesses: "Caring nature",
-    portrait: "assets/candidates/enzo.png",
+    portrait: "assets/candidates/enzo-roster-hd.png",
     initialPortrait: "assets/candidates/enzo-roster-hd.png",
     chat1: "Boss, between you and me… I named myself the executioner to seem tough. In reality, I’m a really chill guy, level-headed and a good decision-maker. I think a lot of our problems can be solved without bloodshed and instead, sometimes a hug!",
     chat2: "Sorry I was late — just broke up a fight between two of the capos. Thankfully, I calmed them down and they agreed to my compromise that conveniently puts 2 G’s a week into both of our pockets. You're welcome…"
@@ -42,7 +42,7 @@ export const candidates = [
     weapon: "Louisville Slugger",
     strengths: "Unstoppable killer",
     weaknesses: "English",
-    portrait: "assets/candidates/ramon.png",
+    portrait: "assets/candidates/ramon-roster-hd.png",
     initialPortrait: "assets/candidates/ramon-roster-hd.png",
     chat1: "[Thick Italian accent] Boss, I no bad guy. Trust me and family will regain strong. Regain? Retain? Re… Baccala! Whatever…",
     chat2: "[Thick Italian accent] Boss, thanks moving me on. For this, I give you the head of your high school bully. It’s on ice in urinal."
@@ -54,7 +54,7 @@ export const candidates = [
     weapon: "Explosives",
     strengths: "Decision-making/strategy",
     weaknesses: "Alcohol addiction",
-    portrait: "assets/candidates/carmine.png",
+    portrait: "assets/candidates/carmine-roster-hd.png",
     initialPortrait: "assets/candidates/carmine-roster-hd.png",
     chat1: "Boss, what’s your favorite drink? Mine? Well, it depends… beer-wise, I like Pabst cuz it’s crisp and easy to drink. If I’m taking shots, it’s gotta be tequila; it wakes you right up! Mixed drinks are tough, but I’ll have to go with either a Moscow Mule or a Greyhound.",
     chat2: "[Slurred speech] I got a little uh um special prize for ya for moving me on hehe ha… Last week I blew up a safe and got some blue bills for ya. Here they are *BIRRRRPPP*…"
