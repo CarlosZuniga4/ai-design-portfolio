@@ -11,6 +11,7 @@ const confirmBio = document.querySelector("#confirm-bio");
 let state = createInitialState();
 let pendingSelection = null;
 let curtainTimers = [];
+const SLIDE_DURATION_MS = 500;
 
 function candidateBio(candidate) {
   return `
@@ -116,7 +117,7 @@ function renderInterview(entering = false) {
         <span>${state.chatIndex + 1} / ${ids.length}</span>
       </header>
       <div id="interview-scene" class="interview-scene ${entering ? "enter-right" : ""}">
-        <img src="assets/scenes/interview-${candidate.id}.png" alt="${candidate.name} sitting at the bar with the boss" />
+        <img src="${candidate.interviewScene}" alt="${candidate.name} sitting at the bar with the boss" />
       </div>
       <div class="textbox dialogue-box">
         <span class="speaker">${candidate.name}</span>
@@ -128,7 +129,11 @@ function renderInterview(entering = false) {
         </div>
       </div>
     </section>`;
-  if (entering) window.setTimeout(() => document.querySelector("#interview-scene")?.classList.remove("enter-right"), 1000);
+  if (entering) {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => document.querySelector("#interview-scene")?.classList.remove("enter-right"));
+    });
+  }
 }
 
 function renderEnding() {
@@ -213,8 +218,8 @@ function handleResponse(sentiment) {
   window.setTimeout(() => {
     state.chatIndex += 1;
     renderInterview(true);
-    window.setTimeout(() => { state.locked = false; }, 1000);
-  }, 1000);
+    window.setTimeout(() => { state.locked = false; }, SLIDE_DURATION_MS);
+  }, SLIDE_DURATION_MS);
 }
 
 function replay() {

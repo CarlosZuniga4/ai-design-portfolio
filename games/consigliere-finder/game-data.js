@@ -8,6 +8,7 @@ export const candidates = [
     weaknesses: "Lady problems",
     portrait: "assets/candidates/arturo.png",
     initialPortrait: "assets/candidates/arturo-roster.png",
+    interviewScene: "assets/scenes/interview-arturo.png",
     chat1: "Ugh… Starla was her name… the thighs on that woman could crush a watermelon… Anyways, word got out about us, and now her husband is tracking me down as we speak.",
     chat2: "Hey boss, thanks for moving me on to the next round. I was talking to this girl last night, and one thing led to another. Long story short, I stayed the night at her place and stole some money from her purse on my way out in the morning. It’s all yours!"
   },
@@ -20,6 +21,7 @@ export const candidates = [
     weaknesses: "Physical activity/Gabagool",
     portrait: "assets/candidates/giovanni.png",
     initialPortrait: "assets/candidates/giovanni-roster.png",
+    interviewScene: "assets/scenes/interview-giovanni.png",
     chat1: "Boss, you been to Jersey Mike’s recently? They did something to their gabagool; it tastes tremendous! If only their subs were bigger…",
     chat2: "To express my appreciation for your consideration of my being second-in-command, here’s one of the new hot honey gabagool subs from Jersey Mike's. It may or may not have a couple of bites taken out of it — I was kinda hungry on the drive here."
   },
@@ -32,6 +34,7 @@ export const candidates = [
     weaknesses: "Caring nature",
     portrait: "assets/candidates/enzo-roster-hd.png",
     initialPortrait: "assets/candidates/enzo-roster-hd.png",
+    interviewScene: "assets/scenes/interview-enzo.png",
     chat1: "Boss, between you and me… I named myself the executioner to seem tough. In reality, I’m a really chill guy, level-headed and a good decision-maker. I think a lot of our problems can be solved without bloodshed and instead, sometimes a hug!",
     chat2: "Sorry I was late — just broke up a fight between two of the capos. Thankfully, I calmed them down and they agreed to my compromise that conveniently puts 2 G’s a week into both of our pockets. You're welcome…"
   },
@@ -44,6 +47,7 @@ export const candidates = [
     weaknesses: "English",
     portrait: "assets/candidates/ramon-roster-hd.png",
     initialPortrait: "assets/candidates/ramon-roster-hd.png",
+    interviewScene: "assets/scenes/interview-ramon.png",
     chat1: "[Thick Italian accent] Boss, I no bad guy. Trust me and family will regain strong. Regain? Retain? Re… Baccala! Whatever…",
     chat2: "[Thick Italian accent] Boss, thanks moving me on. For this, I give you the head of your high school bully. It’s on ice in urinal."
   },
@@ -56,6 +60,7 @@ export const candidates = [
     weaknesses: "Alcohol addiction",
     portrait: "assets/candidates/carmine-roster-hd.png",
     initialPortrait: "assets/candidates/carmine-roster-hd.png",
+    interviewScene: "assets/scenes/interview-carmine.png",
     chat1: "Boss, what’s your favorite drink? Mine? Well, it depends… beer-wise, I like Pabst cuz it’s crisp and easy to drink. If I’m taking shots, it’s gotta be tequila; it wakes you right up! Mixed drinks are tough, but I’ll have to go with either a Moscow Mule or a Greyhound.",
     chat2: "[Slurred speech] I got a little uh um special prize for ya for moving me on hehe ha… Last week I blew up a safe and got some blue bills for ya. Here they are *BIRRRRPPP*…"
   },
@@ -68,6 +73,7 @@ export const candidates = [
     weaknesses: "Intelligence",
     portrait: "assets/candidates/stevey.png",
     initialPortrait: "assets/candidates/stevey-roster.png",
+    interviewScene: "assets/scenes/interview-stevey.png",
     chat1: "You know what I’m always confused about: We’re always trying to get money, right? Why not just start printing our own? Would solve a lot of problems…",
     chat2: "Thanks for promoting me to Consigliere boss. I won’t let you down! Wait… you’re still doing chit chats… oh…"
   },
@@ -80,6 +86,7 @@ export const candidates = [
     weaknesses: "Can’t stop talking",
     portrait: "assets/candidates/bobby.png",
     initialPortrait: "assets/candidates/bobby-roster.png",
+    interviewScene: "assets/scenes/interview-bobby.png",
     chat1: "Ayeeee! Ohhhh! Name’s Bobby Beccorino from around the way. How’s it hangin? I’m a whole plate of pancakes pal, name’s Bobby Beccorino, you know, from around the way. Come over to the site where I do all my construction stuff, have you seen it? It’s around the way. Just hop in your car, drive down the road, and when you get to the way — go around it.",
     chat2: "Boss, remember me? Name’s Bobby Beccorino from around the way. People around the way are questioning why I moved on to the second round but I had to remind them: ‘Hey there, pal, Bobby Beccorino has been laying drywall since you were in diapers! Yeah, laying drywall instead of hanging it. That’s how much of a plate of pancakes I am, pal!’"
   }

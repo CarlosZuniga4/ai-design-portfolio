@@ -113,7 +113,7 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
 .interview-screen, .ending-screen { display: grid; grid-template-rows: auto 1fr auto; background: #050202; }
 .interview-header, .ending-header { position: absolute; z-index: 3; top: 1.5rem; left: 2rem; right: 2rem; display: flex; justify-content: space-between; align-items: start; text-shadow: 0 3px 10px #000; }
 .interview-header { color: var(--gold-bright); font-size: clamp(1rem, 1.5vw, 1.35rem); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.interview-scene { position: absolute; inset: 0 0 27vh; transition: transform 1s ease-in-out, opacity 1s ease-in-out; }
+.interview-scene { position: absolute; inset: 0 0 27vh; transition: transform .5s ease-in-out, opacity .5s ease-in-out; }
 .interview-scene img, .ending-image { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .interview-scene.exit-left { transform: translateX(-110%); opacity: .2; }
 .interview-scene.enter-right { transform: translateX(110%); opacity: .2; }
