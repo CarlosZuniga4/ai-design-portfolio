@@ -84,6 +84,7 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
   transform: none;
 }
 .candidate-card { position: relative; min-width: 0; padding: 1.5rem .7rem .6rem; overflow: hidden; background: transparent url("assets/ui/mobster-frame-transparent.png") center/100% 100% no-repeat; border: 0; color: #25150d; cursor: pointer; transition: transform .2s ease, filter .2s ease; }
+.initial-roster .candidate-card { background-image: url("assets/ui/mobster-frame-open.png"); }
 .candidate-card:hover, .candidate-card:focus-visible { filter: drop-shadow(0 0 16px rgba(255, 213, 89, .95)); transform: translateY(-5px); z-index: 2; }
 .candidate-portrait {
   position: absolute;
@@ -94,6 +95,8 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
   overflow: hidden;
   background: #f7edcf;
 }
+.initial-roster .candidate-portrait { background: transparent; }
+.initial-roster .candidate-portrait img { mix-blend-mode: normal; }
 .candidate-portrait img {
   width: 100%;
   height: auto;

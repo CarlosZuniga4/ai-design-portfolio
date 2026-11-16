@@ -50,8 +50,9 @@ function selectionConfig() {
 function renderSelection() {
   const config = selectionConfig();
   const remaining = config.limit - config.selected.length;
+  const isInitialRoster = state.phase === "select-initial";
   game.innerHTML = `
-    <section class="screen selection-screen">
+    <section class="screen selection-screen ${isInitialRoster ? "initial-roster" : ""}">
       <header class="selection-header">
         <p class="eyebrow">Gabagool crime family</p>
         <h1>${config.title}</h1>
@@ -69,12 +70,13 @@ function renderSelection() {
             const selectedIndex = config.selected.indexOf(id);
             const selected = selectedIndex >= 0;
             const disabled = !selected && config.selected.length >= config.limit;
+            const portrait = isInitialRoster && candidate.initialPortrait ? candidate.initialPortrait : candidate.portrait;
             return `
               <button class="candidate-card ${selected ? "is-selected" : ""} ${disabled ? "is-disabled" : ""}"
                 data-candidate="${id}" ${disabled || selected ? "disabled" : ""}
                 aria-label="${candidate.name}${selected ? `, selected number ${selectedIndex + 1}` : ""}">
                 <span class="candidate-portrait">
-                  <img src="${candidate.portrait}" alt="${candidate.name}" />
+                  <img src="${portrait}" alt="${candidate.name}" />
                 </span>
                 ${selected ? `<span class="selection-order" aria-hidden="true">✓ ${selectedIndex + 1}</span>` : ""}
               </button>`;
