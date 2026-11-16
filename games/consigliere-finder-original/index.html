@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#160706" />
+    <title>Consigliere Finder</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%2368150f%22/><text x=%2232%22 y=%2244%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22%23f1cf78%22>C</text></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="game" aria-live="polite"></main>
+
+    <div id="curtain" class="curtain" aria-hidden="true">
+      <div class="curtain-panel curtain-left"></div>
+      <div class="curtain-panel curtain-right"></div>
+      <p id="curtain-label" class="curtain-label"></p>
+    </div>
+
+    <dialog id="confirm-dialog" class="confirm-dialog">
+      <form method="dialog">
+        <p class="eyebrow">Make it official</p>
+        <h2 id="confirm-title"></h2>
+        <div id="confirm-bio" class="confirm-bio"></div>
+        <p>This choice cannot be changed.</p>
+        <div class="dialog-actions">
+          <button value="cancel" class="button button-quiet">Cancel</button>
+          <button value="confirm" class="button button-primary">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="game-bundle.js"></script>
+  </body>
+</html>
