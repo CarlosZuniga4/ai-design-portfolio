@@ -10,7 +10,7 @@ A six-page static portfolio created for Carlos Zuniga's AI for Design course.
 - `consigiere.html` - Consigiere research and game proposal
 - `consigliere-rough-draft.html` - Consigliere Finder playable rough draft
 - `consigliere-final-draft.html` - Consigliere Finder playable final draft and revision notes
-- `games/consigliere-finder/` - deployable game files linked from the rough-draft page
+- `games/consigliere-finder/` - deployable game files linked from the final-draft page
 
 ## Publish with GitHub Pages
 
@@ -23,7 +23,7 @@ A six-page static portfolio created for Carlos Zuniga's AI for Design course.
 All site links are relative, so the portfolio works both at a user-site URL and inside a project
 subdirectory such as `https://username.github.io/repository-name/`.
 
-The deployment workflow publishes the five portfolio pages, the playable Consigliere Finder game,
+The deployment workflow publishes the six portfolio pages, the playable Consigliere Finder game,
 and their web assets. The original project
 images and design brief remain unchanged in the repository and are not included in the deployed site.
 
