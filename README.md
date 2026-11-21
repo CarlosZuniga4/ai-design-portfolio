@@ -1,6 +1,6 @@
 # AI for Interdisciplinary Design Portfolio
 
-A five-page static portfolio created for Carlos Zuniga's AI for Design course.
+A six-page static portfolio created for Carlos Zuniga's AI for Design course.
 
 ## Pages
 
@@ -9,6 +9,7 @@ A five-page static portfolio created for Carlos Zuniga's AI for Design course.
 - `classroom.html` - 2030 discussion-focused classroom project
 - `consigiere.html` - Consigiere research and game proposal
 - `consigliere-rough-draft.html` - Consigliere Finder playable rough draft
+- `consigliere-final-draft.html` - Consigliere Finder playable final draft and revision notes
 - `games/consigliere-finder/` - deployable game files linked from the rough-draft page
 
 ## Publish with GitHub Pages
