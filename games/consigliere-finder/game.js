@@ -1,5 +1,6 @@
 import { candidates, candidateById, endings, openingCopy } from "./game-data.js";
 import { addUniqueSelection, createInitialState, getEndingType, recordResponse } from "./game-logic.js";
+import { mobThemePlayer } from "./mob-theme-player.js";
 
 const game = document.querySelector("#game");
 const curtain = document.querySelector("#curtain");
@@ -12,7 +13,24 @@ let state = createInitialState();
 let pendingSelection = null;
 let curtainTimers = [];
 const SLIDE_DURATION_MS = 500;
+const REACTION_HOLD_MS = 2000;
 const FINAL_SELECTION_BADGE_DELAY_MS = 400;
+const reactionPreloads = new Set();
+
+function reactionScene(candidate, sentiment) {
+  if (sentiment === "neutral") return candidate.interviewScene;
+  return `assets/scenes/reactions/interview-${candidate.id}-${sentiment}.png`;
+}
+
+function preloadReactionScenes(ids) {
+  ids.forEach((id) => ["positive", "negative"].forEach((sentiment) => {
+    const src = reactionScene(candidateById[id], sentiment);
+    if (reactionPreloads.has(src)) return;
+    reactionPreloads.add(src);
+    const image = new Image();
+    image.src = src;
+  }));
+}
 
 function candidateBio(candidate) {
   return `
@@ -118,7 +136,7 @@ function renderInterview(entering = false) {
         <span>${state.chatIndex + 1} / ${ids.length}</span>
       </header>
       <div id="interview-scene" class="interview-scene ${entering ? "enter-right" : ""}">
-        <img src="${candidate.interviewScene}" alt="${candidate.name} sitting at the bar with the boss" />
+        <img id="interview-art" src="${candidate.interviewScene}" alt="${candidate.name} sitting at the bar with the boss" />
       </div>
       <div class="textbox dialogue-box">
         <span class="speaker">${candidate.name}</span>
@@ -162,11 +180,15 @@ function render() {
   return renderEnding();
 }
 
-function runCurtain(label, updateScene) {
+function runCurtain(label, updateScene, audioTransition = "none") {
   state.locked = true;
   curtainLabel.textContent = label;
   curtain.classList.add("is-active");
   curtain.setAttribute("aria-hidden", "false");
+  if (audioTransition === "enter-chat") void mobThemePlayer.start().catch(() => {});
+  if (audioTransition === "leave-chat") {
+    curtainTimers.push(window.setTimeout(() => mobThemePlayer.fadeOut(1), 500));
+  }
   curtainTimers.push(window.setTimeout(() => {
     updateScene();
     render();
@@ -186,19 +208,25 @@ function openConfirmation(candidateId) {
   confirmDialog.showModal();
 }
 
-function finishSelection(label, updateScene) {
+function finishSelection(label, updateScene, audioTransition = "none") {
   state.locked = true;
   renderSelection();
-  curtainTimers.push(window.setTimeout(() => runCurtain(label, updateScene), FINAL_SELECTION_BADGE_DELAY_MS));
+  curtainTimers.push(window.setTimeout(() => runCurtain(label, updateScene, audioTransition), FINAL_SELECTION_BADGE_DELAY_MS));
 }
 
 function confirmSelection(candidateId) {
   if (state.phase === "select-initial") {
     state.firstRound = addUniqueSelection(state.firstRound, candidateId, 3);
-    if (state.firstRound.length === 3) return finishSelection("Chit Chat", () => { state.phase = "chat1"; state.chatIndex = 0; });
+    if (state.firstRound.length === 3) {
+      preloadReactionScenes(state.firstRound);
+      return finishSelection("Chit Chat", () => { state.phase = "chat1"; state.chatIndex = 0; }, "enter-chat");
+    }
   } else if (state.phase === "select-shortlist") {
     state.finalists = addUniqueSelection(state.finalists, candidateId, 2);
-    if (state.finalists.length === 2) return finishSelection("Chit Chat", () => { state.phase = "chat2"; state.chatIndex = 0; });
+    if (state.finalists.length === 2) {
+      preloadReactionScenes(state.finalists);
+      return finishSelection("Chit Chat", () => { state.phase = "chat2"; state.chatIndex = 0; }, "enter-chat");
+    }
   } else {
     state.winner = candidateId;
     return finishSelection("Your Consigliere", () => { state.phase = "ending"; });
@@ -213,25 +241,36 @@ function handleResponse(sentiment) {
   const round = state.phase === "chat1" ? 1 : 2;
   state.responses = recordResponse(state.responses, candidateId, round, sentiment);
   state.locked = true;
+  document.querySelectorAll(".response").forEach((button) => { button.disabled = true; });
+  const reactionImage = document.querySelector("#interview-art");
+  if (reactionImage) {
+    reactionImage.src = reactionScene(candidateById[candidateId], sentiment);
+    reactionImage.alt = `${candidateById[candidateId].name} and the boss reacting ${sentiment === "positive" ? "positively" : sentiment === "negative" ? "angrily" : "with straight faces"}`;
+  }
 
   if (state.chatIndex === ids.length - 1) {
     const nextPhase = round === 1 ? "select-shortlist" : "select-final";
     const label = round === 1 ? "Choose two captains" : "Choose your Consigliere";
-    return runCurtain(label, () => { state.phase = nextPhase; state.chatIndex = 0; });
+    curtainTimers.push(window.setTimeout(() => {
+      runCurtain(label, () => { state.phase = nextPhase; state.chatIndex = 0; }, "leave-chat");
+    }, REACTION_HOLD_MS));
+    return;
   }
 
-  document.querySelector("#interview-scene")?.classList.add("exit-left");
-  document.querySelectorAll(".response").forEach((button) => { button.disabled = true; });
-  window.setTimeout(() => {
-    state.chatIndex += 1;
-    renderInterview(true);
-    window.setTimeout(() => { state.locked = false; }, SLIDE_DURATION_MS);
-  }, SLIDE_DURATION_MS);
+  curtainTimers.push(window.setTimeout(() => {
+    document.querySelector("#interview-scene")?.classList.add("exit-left");
+    curtainTimers.push(window.setTimeout(() => {
+      state.chatIndex += 1;
+      renderInterview(true);
+      curtainTimers.push(window.setTimeout(() => { state.locked = false; }, SLIDE_DURATION_MS));
+    }, SLIDE_DURATION_MS));
+  }, REACTION_HOLD_MS));
 }
 
 function replay() {
   curtainTimers.forEach(window.clearTimeout);
   curtainTimers = [];
+  mobThemePlayer.fadeOut(0.15);
   state = createInitialState();
   pendingSelection = null;
   render();
