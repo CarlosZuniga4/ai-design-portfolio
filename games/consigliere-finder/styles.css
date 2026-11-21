@@ -84,8 +84,7 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
   transform: none;
 }
 .candidate-card { position: relative; min-width: 0; padding: 1.5rem .7rem .6rem; overflow: hidden; background: transparent; border: 0; color: #25150d; cursor: pointer; transition: transform .2s ease, filter .2s ease; }
-.candidate-card::before { position: absolute; z-index: 2; inset: 0; background: transparent url("assets/ui/mobster-frame-transparent.png") center/100% 100% no-repeat; content: ""; pointer-events: none; }
-.initial-roster .candidate-card::before { background-image: url("assets/ui/mobster-frame-open.png"); }
+.candidate-card::before { position: absolute; z-index: 2; inset: 0; background: transparent url("assets/ui/mobster-frame-open.png") center/100% 100% no-repeat; content: ""; pointer-events: none; }
 .candidate-card:hover, .candidate-card:focus-visible { filter: drop-shadow(0 0 16px rgba(255, 213, 89, .95)); transform: translateY(-5px); z-index: 2; }
 .candidate-portrait {
   position: absolute;
@@ -111,9 +110,9 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
   image-rendering: pixelated;
 }
 .candidate-card[data-candidate="giovanni"] .candidate-portrait img { width: 205%; }
-.candidate-card[data-candidate="enzo"] .candidate-portrait img { width: 160%; }
+.candidate-card[data-candidate="enzo"] .candidate-portrait img { top: 0; width: 145%; }
 .candidate-card[data-candidate="stevey"] .candidate-portrait img { width: 205%; }
-.candidate-card[data-candidate="bobby"] .candidate-portrait img { width: 220%; }
+.candidate-card[data-candidate="bobby"] .candidate-portrait img { top: 0; width: 180%; }
 .candidate-card.is-selected { filter: drop-shadow(0 0 20px var(--gold-bright)); }
 .candidate-card.is-selected::after { position: absolute; z-index: 3; inset: .45rem; border: 5px solid #f5cf58; border-radius: .3rem; content: ""; pointer-events: none; }
 .selection-order { position: absolute; top: .8rem; right: .8rem; z-index: 4; display: grid; place-items: center; min-width: 2.2rem; height: 2.2rem; padding: 0 .4rem; border-radius: 999px; background: #5c130e; color: #fff5b6; font-weight: 700; }
