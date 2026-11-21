@@ -90,7 +90,7 @@ function renderSelection() {
             const selectedIndex = config.selected.indexOf(id);
             const selected = selectedIndex >= 0;
             const disabled = !selected && config.selected.length >= config.limit;
-            const portrait = isInitialRoster && candidate.initialPortrait ? candidate.initialPortrait : candidate.portrait;
+            const portrait = candidate.initialPortrait || candidate.portrait;
             return `
               <button class="candidate-card ${selected ? "is-selected" : ""} ${disabled ? "is-disabled" : ""}"
                 data-candidate="${id}" ${disabled || selected ? "disabled" : ""}
