@@ -83,14 +83,16 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
   height: calc((72vh - clamp(.5rem, 1.5vh, 1rem)) / 2);
   transform: none;
 }
-.candidate-card { position: relative; min-width: 0; padding: 1.5rem .7rem .6rem; overflow: hidden; background: transparent url("assets/ui/mobster-frame-transparent.png") center/100% 100% no-repeat; border: 0; color: #25150d; cursor: pointer; transition: transform .2s ease, filter .2s ease; }
-.initial-roster .candidate-card { background-image: url("assets/ui/mobster-frame-open.png"); }
+.candidate-card { position: relative; min-width: 0; padding: 1.5rem .7rem .6rem; overflow: hidden; background: transparent; border: 0; color: #25150d; cursor: pointer; transition: transform .2s ease, filter .2s ease; }
+.candidate-card::before { position: absolute; z-index: 2; inset: 0; background: transparent url("assets/ui/mobster-frame-transparent.png") center/100% 100% no-repeat; content: ""; pointer-events: none; }
+.initial-roster .candidate-card::before { background-image: url("assets/ui/mobster-frame-open.png"); }
 .candidate-card:hover, .candidate-card:focus-visible { filter: drop-shadow(0 0 16px rgba(255, 213, 89, .95)); transform: translateY(-5px); z-index: 2; }
 .candidate-portrait {
   position: absolute;
-  top: 19%;
+  z-index: 1;
+  top: 20%;
   right: 21%;
-  bottom: 16%;
+  bottom: 15%;
   left: 21%;
   overflow: hidden;
   background: #f7edcf;
@@ -98,16 +100,23 @@ h1 { margin-bottom: .45rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .9
 .initial-roster .candidate-portrait { background: transparent; }
 .initial-roster .candidate-portrait img { mix-blend-mode: normal; }
 .candidate-portrait img {
-  width: 100%;
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  width: 170%;
+  max-width: none;
   height: auto;
-  object-fit: contain;
-  object-position: 50% 0;
+  transform: translateX(-50%);
   mix-blend-mode: multiply;
   image-rendering: pixelated;
 }
+.candidate-card[data-candidate="giovanni"] .candidate-portrait img { width: 205%; }
+.candidate-card[data-candidate="enzo"] .candidate-portrait img { width: 160%; }
+.candidate-card[data-candidate="stevey"] .candidate-portrait img { width: 205%; }
+.candidate-card[data-candidate="bobby"] .candidate-portrait img { width: 220%; }
 .candidate-card.is-selected { filter: drop-shadow(0 0 20px var(--gold-bright)); }
-.candidate-card.is-selected::after { position: absolute; inset: .45rem; border: 5px solid #f5cf58; border-radius: .3rem; content: ""; pointer-events: none; }
-.selection-order { position: absolute; top: .8rem; right: .8rem; z-index: 3; display: grid; place-items: center; min-width: 2.2rem; height: 2.2rem; padding: 0 .4rem; border-radius: 999px; background: #5c130e; color: #fff5b6; font-weight: 700; }
+.candidate-card.is-selected::after { position: absolute; z-index: 3; inset: .45rem; border: 5px solid #f5cf58; border-radius: .3rem; content: ""; pointer-events: none; }
+.selection-order { position: absolute; top: .8rem; right: .8rem; z-index: 4; display: grid; place-items: center; min-width: 2.2rem; height: 2.2rem; padding: 0 .4rem; border-radius: 999px; background: #5c130e; color: #fff5b6; font-weight: 700; }
 .candidate-card.is-disabled { filter: grayscale(.8) brightness(.45); cursor: not-allowed; }
 
 .interview-screen, .ending-screen { display: grid; grid-template-rows: auto 1fr auto; background: #050202; }
